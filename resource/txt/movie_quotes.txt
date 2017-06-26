@@ -1,0 +1,4 @@
+The Twilio REST API allows you to query meta-data about your account, phone numbers, calls, text messages, and recordings. You can also do some fancy things like initiate outbound calls and send text messages.
+
+HTTP requests to the REST API are protected with HTTP Basic authentication. To learn more about how Twilio handles authentication, please refer to our security documentation. In short, you will use your Twilio account SID as the username and your auth token as the password for HTTP Basic authentication.
+
