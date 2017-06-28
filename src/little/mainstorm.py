@@ -21,13 +21,6 @@ def draw_art():
         brad.right(10)
         draw_square(brad)
         count=count+1
-        # Create the turtle Angie - Draws a circle
-        # angie = turtle.Turtle()
-        # angie.shape("arrow")
-        # angie.color("yellow")
-        # angie.circle(100)
-
     window.exitonclick()
-
 
 draw_art()

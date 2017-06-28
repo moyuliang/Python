@@ -3,7 +3,7 @@ import os
 def rename_files():
     #(1) get file names from a floder
     # r stands for rawpack, and it tells Python, take this string as it is, and don't interprrt it any other way
-    file_list = os.listdir(r"..\\resource\Sec")
+    file_list = os.listdir(r"..\..\\resource\Sec")
     #get current working directory
     saved_path = os.getcwd()
     print("Current Working Directory is "+saved_path)

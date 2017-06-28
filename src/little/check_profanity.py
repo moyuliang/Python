@@ -1,8 +1,8 @@
 import  urllib
 def read_text():
-    quotes = open("..\\resource\\txt\movie_quotes.txt")
+    quotes = open("..\..\\resource\\txt\movie_quotes.txt")
     contents_of_file = quotes.read()
-    #print(contents_of_file)
+    print(contents_of_file)
     quotes.close()
     check_profanity(contents_of_file)
 
