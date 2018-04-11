@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#递归函数实现汉诺塔游戏
 def move(n, a, b, c):
     if n==1:
         print(a+"-->"+c)
