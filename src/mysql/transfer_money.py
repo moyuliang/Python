@@ -6,6 +6,7 @@ class TransferMoney(object):
     def __init__(self, conn):
         self.conn = conn
 
+    # 检查账户是否可用
     def check_account_available(self, id):
         cursor = conn.cursor()
         try:
@@ -18,6 +19,7 @@ class TransferMoney(object):
         finally:
             cursor.close()
 
+    # 检查扣款账户余额是否充足
     def has_enough_money(self, id, money):
         cursor = conn.cursor()
         try:
@@ -30,6 +32,7 @@ class TransferMoney(object):
         finally:
             cursor.close()
 
+    # 扣款
     def reduce_money(self, id, money):
         cursor = conn.cursor()
         try:
@@ -41,6 +44,7 @@ class TransferMoney(object):
         finally:
             cursor.close()
 
+    # 收款
     def add_money(self, id, money):
         cursor = conn.cursor()
         try:
@@ -59,9 +63,9 @@ class TransferMoney(object):
             self.has_enough_money(source_id, money)
             self.reduce_money(source_id, money)
             self.add_money(target_id, money)
-            self.conn.commit()
+            self.conn.commit()  # 以上操作都成功，则提交事务
         except Exception as e:
-            self.conn.rollback()
+            self.conn.rollback()  # 以上操作不成功，则回滚事务
             raise e
 
 
@@ -82,8 +86,8 @@ if __name__ == "__main__":
 
     try:
         tr_money.transfer(source_id, target_id, money)
-        print "From账户:%s\nTo账户:%s\n转账:%s\n成功!!!" % (source_id, target_id, money)
+        print "From:账户%s\nTo:账户%s\n转账:%s\n结果：成功!!!" % (source_id, target_id, money)
     except Exception as e:
-        print "转账失败：" + str(e)
+        print "From:账户%s\nTo:账户%s\n转账:%s\n结果：失败\n原因：" % (source_id, target_id, money) + str(e)
     finally:
         conn.close()
