@@ -112,3 +112,6 @@ def count():
     return fs
 f1, f2, f3 = count()
 print f1(),f2(),f3()
+
+
+print filter(lambda s:s and len(s.strip()) > 0, ['test', None, '', 'str', '  ', 'END'])
