@@ -22,6 +22,7 @@ def vowel_count(a_str):
                 dic[key]=dic[key]+1
     return dic
 
+# 判断是否为回文——判断用户输入的字符串是否为回文。回文是指正反拼写形式都是一样的词，譬如“racecar”。
 def is_palindrome(a_str):
     if a_str==a_str[::-1]:
         return True
