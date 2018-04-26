@@ -7,8 +7,10 @@ def reverse_string(a_str):
 # 拉丁猪文字游戏——这是一个英语语言游戏。
 # 基本规则是将一个英语单词的第一个辅音音素的字母移动到词尾并且加上后缀-ay（譬如“banana”会变成“anana-bay”）
 def ladin_pig(a_str):
-    if a_str[0] not in ('a','e','i','o','u'):
-        return a_str[1:]+"-"+a_str[0]+"ay"
+    for i,value in enumerate(a_str):
+        if value not in ('a','e','i','o','u'):
+            return a_str[:i]+a_str[i+1:]+"-"+a_str[i]+"ay"
+    return False
 
 # 统计元音字母——输入一个字符串，统计处其中元音字母的数量。更复杂点的话统计出每个元音字母的数量。
 def vowel_count(a_str):
