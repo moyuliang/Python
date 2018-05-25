@@ -15,6 +15,11 @@ with codecs.open("..\..\\resource\\txt\\readfile.txt", 'r', 'gbk') as fr:
         fw.close()
         print(e)
 
+# 以读写方式打开文件
+# f=open("writefile.txt",'r+')
+# f=open("writefile.txt",'w+')
+# 以追加和读写方式打开文件
+# f=open("writefile.txt",'a')
 # **********文件读写end**********
 
 
