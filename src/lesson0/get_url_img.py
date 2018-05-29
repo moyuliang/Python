@@ -10,7 +10,7 @@ logger.setLevel(logging.DEBUG)
 
 # Create a file handler
 
-handler = logging.FileHandler('download_img.log')
+handler = logging.FileHandler('..\..\\log\download_img.log')
 handler.setLevel(logging.DEBUG)
 
 # Create a logging format

@@ -1,0 +1,11 @@
+POST http://www.thsrc.com.tw/tw/TimeTable/SearchResult HTTP/1.1
+Origin: http://www.thsrc.com.tw
+User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36
+Host: www.thsrc.com.tw
+Content-Length: 177
+
+StartStation: 977abb69-413a-4ccf-a109-0272c24fd490
+EndStation: a7a04c89-900b-4798-95a3-c01c455622f4
+SearchDate: 2018/05/28
+SearchTime: 22:30
+SearchWay: DepartureInMandarin
