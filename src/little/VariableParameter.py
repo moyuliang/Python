@@ -8,6 +8,6 @@ def average(*args):#*args 可变参数，实际上是truple
             sum = sum + x
         average = sum/len(args)
     return average
-print average()
-print average(1, 2)
-print average(1, 2, 2, 3, 4)
+print(average())
+print(average(1, 2))
+print(average(1, 2, 2, 3, 4))

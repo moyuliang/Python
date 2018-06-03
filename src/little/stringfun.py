@@ -5,7 +5,7 @@ def stringfun():
     start_link = page.find('<a href=')
     start_quote = page.find('"', start_link)
     end_quote = page.find('"', start_quote+1)
-    print page[start_quote+1:end_quote]
+    print(page[start_quote+1:end_quote])
 
     x = 3.84159
 

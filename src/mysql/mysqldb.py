@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import MySQLdb
+import pymysql
 
-conn = MySQLdb.Connection(  # 创建连接
+conn = pymysql.connect(  # 创建连接
     host='127.0.0.1',
     port=3306,  # 端口
     user='root',  # 用户
@@ -23,7 +23,7 @@ try:
 
     conn.commit()
 except Exception as e:
-    print e
+    print(e)
     conn.rollback()
 
 sql = "select * from user"
@@ -31,7 +31,7 @@ cursor.execute(sql)
 
 rs = cursor.fetchall()
 for row in rs:
-    print "userid=%s, username=%s" % row
+    print("userid=%s, username=%s" % row)
 
 cursor.close()  # 关闭游标
 conn.close()  # 关闭连接

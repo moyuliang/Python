@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import MySQLdb
+import pymysql
 
 
 class TransferMoney(object):
@@ -11,7 +11,7 @@ class TransferMoney(object):
         cursor = conn.cursor()
         try:
             sql = "select * from bank where account=%s" % id
-            print "check_account_available:" + sql
+            print("check_account_available:" + sql)
             cursor.execute(sql)
             rs = cursor.fetchall()
             if len(rs) != 1:
@@ -24,7 +24,7 @@ class TransferMoney(object):
         cursor = conn.cursor()
         try:
             sql = "select * from bank where account=%s and money>=%s" % (id, money)
-            print "has_enough_money:" + sql
+            print("has_enough_money:" + sql)
             cursor.execute(sql)
             rs = cursor.fetchall()
             if len(rs) != 1:
@@ -37,7 +37,7 @@ class TransferMoney(object):
         cursor = conn.cursor()
         try:
             sql = "update bank set money=money-%s where account=%s" % (money, id)
-            print "reduce_money:" + sql
+            print("reduce_money:" + sql)
             cursor.execute(sql)
             if cursor.rowcount != 1:
                 raise Exception("帐号%s扣款%s失败" % (id, money))
@@ -49,7 +49,7 @@ class TransferMoney(object):
         cursor = conn.cursor()
         try:
             sql = "update bank set money=money+%s where account=%s" % (money, id)
-            print "add_money:" + sql
+            print("add_money:" + sql)
             cursor.execute(sql)
             if cursor.rowcount != 1:
                 raise Exception("帐号%s收款%s失败" % (id, money))
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     target_id = 7
     money = 100
 
-    conn = MySQLdb.Connection(  # 创建连接
+    conn = pymysql.connect(  # 创建连接
         host='127.0.0.1',  #
         port=3306,  # 端口
         user='root',  # 用户
@@ -86,8 +86,8 @@ if __name__ == "__main__":
 
     try:
         tr_money.transfer(source_id, target_id, money)
-        print "From:账户%s\nTo:账户%s\n转账:%s\n结果：成功!!!" % (source_id, target_id, money)
+        print("From:账户%s\nTo:账户%s\n转账:%s\n结果：成功!!!" % (source_id, target_id, money))
     except Exception as e:
-        print "From:账户%s\nTo:账户%s\n转账:%s\n结果：失败\n原因：" % (source_id, target_id, money) + str(e)
+        print("From:账户%s\nTo:账户%s\n转账:%s\n结果：失败\n原因：" % (source_id, target_id, money) + str(e))
     finally:
         conn.close()

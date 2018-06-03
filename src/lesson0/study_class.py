@@ -18,7 +18,7 @@ class Programmer(object):
         return self.__weight
 
     def self_introduction(self):
-        print "My Name is %s \nI am %s years old\n" % (self.name, self._age)
+        print("My Name is %s \nI am %s years old\n" % (self.name, self._age))
 
 
 class BackendProgrammer(Programmer):
@@ -27,8 +27,8 @@ class BackendProgrammer(Programmer):
         self.language = language
 
     def self_introduction(self):
-        print "My Name is %s \nMy favorite language is %s\n" % (
-            self.name, self.language)
+        print("My Name is %s \nMy favorite language is %s\n" % (
+            self.name, self.language))
 
 # 多态
 
@@ -40,18 +40,18 @@ def introduce(programmer):
 
 if __name__ == '__main__':
     programmer = Programmer('Albert', 25, 80)
-    print dir(programmer)
-    print programmer.__dict__
-    print programmer._Programmer__weight
-    print programmer.get_hobby()
-    print programmer.get_weight
+    print(dir(programmer))
+    print(programmer.__dict__)
+    print(programmer._Programmer__weight)
+    print(programmer.get_hobby())
+    print(programmer.get_weight)
     programmer.self_introduction()
 
     backendProgrammer = BackendProgrammer('Tim', 30, 70, 'Python')
-    print dir(backendProgrammer)
-    print backendProgrammer.__dict__
-    print type(backendProgrammer)
-    print isinstance(backendProgrammer, Programmer)  # 返回True，被判定为所属的父类
+    print(dir(backendProgrammer))
+    print(backendProgrammer.__dict__)
+    print(type(backendProgrammer))
+    print(isinstance(backendProgrammer, Programmer)) # 返回True，被判定为所属的父类
 
     introduce(programmer)
     introduce(backendProgrammer)

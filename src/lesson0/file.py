@@ -13,7 +13,7 @@ with codecs.open("..\..\\resource\\txt\\readfile.txt", 'r', 'gbk') as fr:
             fw.write(line)
     except IOError as e:
         fw.close()
-        print(e)
+        print*(e)
 
 # 以读写方式打开文件
 # f=open("writefile.txt",'r+')
@@ -31,24 +31,24 @@ with codecs.open("..\..\\resource\\txt\\readfile.txt", 'r', 'gbk') as fr:
 print(os.name)
 
 # 查看环境变量
-print os.environ
+print(os.environ)
 
 # 获取某个环境变量的值
-print os.getenv('PATH')
+print(os.getenv('PATH'))
 
 # 查看当前目录的绝对路径
-print os.path.abspath('.')
+print(os.path.abspath('.'))
 
 # 在某个目录下创建一个新目录
 # 首先把目录的完整路径表示出来：
-print os.path.join('C:\Self\Study\Python\Python\src\lesson0', 'testfile')
+print(os.path.join('C:\Self\Study\Python\Python\src\lesson0', 'testfile'))
 # 然后创建一个目录：
-# print os.mkdir('C:\Self\Study\Python\Python\src\lesson0\\testfile')
+# print(*os.mkdir('C:\Self\Study\Python\Python\src\lesson0\\testfile')
 # 删掉一个目录：
 # print os.rmdir('C:\Self\Study\Python\Python\src\lesson0\\testfile')
 
 # 拆分路径，后一部分总是最后级别的目录或文件名
-print os.path.split('C:\Self\Study\Python\Python\src\lesson0\lesson.txt')
+print(os.path.split('C:\Self\Study\Python\Python\src\lesson0\lesson.txt'))
 
 # 文件重命名
 # os.rename('test.txt','test.py')
@@ -60,7 +60,7 @@ print os.path.split('C:\Self\Study\Python\Python\src\lesson0\lesson.txt')
 # shutil.copyfile('lesson0_1.py','test.py')
 
 # 列出当前目录下所有py文件
-print [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1] == '.py']
+print([x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1] == '.py'])
 
 # **********操作文件和目录end**********
 
@@ -70,12 +70,12 @@ print [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1
 # 把python对象变成一个json（序列化）
 d = dict(name='Bob', age=20, score=88)
 
-print json.dumps(d)
+print(json.dumps(d))
 # {"age": 20, "score": 88, "name": "Bob"}
 
 # 把json变成python对象（反序列化）
 json_str = '{"age": 20, "score": 88, "name": "Bob"}'
-print json.loads(json_str)
+print(json.loads(json_str))
 # {u'age': 20, u'score': 88, u'name': u'Bob'}
 
 
@@ -96,7 +96,7 @@ def student2dict(std):
 
 
 s = Student('Bob', 20, 88)
-print json.dumps(s, default=student2dict)
+print(json.dumps(s, default=student2dict))
 # print json.dumps(s,default=lambda obj:obj.__dict__)
 # 反序列化Student对象
 
@@ -105,6 +105,6 @@ def dict2student(d):
     return Student(d['name'], d['age'], d['score'])
 
 
-print json.loads(json_str, object_hook=dict2student)
+print(json.loads(json_str, object_hook=dict2student))
 
 # **********序列化end**********

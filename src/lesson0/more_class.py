@@ -3,12 +3,12 @@
 #内建属性
 class Programmer(object):
     def __new__(cls, *args, **kwargs):
-        print 'call __new__ method'
-        print args
+        print('call __new__ method')
+        print(args)
         return super(Programmer, cls).__new__(cls, *args, **kwargs)
 
     def __init__(self, name, age):
-        print 'call __init__ method'
+        print('call __init__ method')
         self.name = name
         if isinstance(age, int):
             self.age = age
@@ -49,10 +49,10 @@ class Programmer(object):
 
 if __name__ == '__main__':
     programmer = Programmer('Albert', 25)
-    print programmer.__dict__
+    print(programmer.__dict__)
     programmer1 = Programmer('Bill', 30)
-    print programmer == programmer1
-    print programmer + programmer1
-    print programmer
-    print dir(programmer)
-    print programmer.name
+    print(programmer == programmer1)
+    print(programmer + programmer1)
+    print(programmer)
+    print(dir(programmer))
+    print(programmer.name)

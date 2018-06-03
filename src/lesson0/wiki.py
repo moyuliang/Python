@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup as bs
-import urllib2
+import urllib
 import re
 
 # 请求URL并把结果用utf-8编码
-resp=urllib2.urlopen("http://en.wikipedia.org/wiki/Main_Page").read().decode("utf-8")
+resp=urllib.urlopen("http://en.wikipedia.org/wiki/Main_Page").read().decode("utf-8")
 
 # 使用BeautifulSoup去解析
 soup=bs(resp,"html.parser")

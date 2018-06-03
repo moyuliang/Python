@@ -45,34 +45,34 @@ def random_game():
 
     while True:
         try:
-            guess = int(raw_input("Please enter a number in 1~100:"))
-        except ValueError, e:
-            print "Input Error\n"
+            guess = int(input("Please enter a number in 1~100:"))
+        except ValueError as e:
+            print("Input Error\n")
             continue
 
         if guess > num:
-            print "Your number is bigger than right number:", guess
+            print("Your number is bigger than right number:", guess)
         elif guess < num:
-            print "Your number is smaller than right number:", guess
+            print("Your number is smaller than right number:", guess)
         else:
-            print "Guess right,Game Over!"
+            print("Guess right,Game Over!")
             break
-        print "\n"
+        print("\n")
 
 
 while True:
-    case = int(raw_input("1.逆转字符串\t2.拉丁猪文字游戏\t3.统计元音字母\t\t4.判断回文\t5.猜数字\t0.退出\nPlease enter a num:"))
+    case = int(input("1.逆转字符串\t2.拉丁猪文字游戏\t3.统计元音字母\t\t4.判断回文\t5.猜数字\t0.退出\nPlease enter a num:"))
 
     if case == 1:
-        print reverse_string(raw_input("Please enter a string:"))
+        print(reverse_string(input("Please enter a string:")))
     if case == 2:
-        print ladin_pig(raw_input("Please enter a word:"))
+        print(ladin_pig(input("Please enter a word:")))
     if case == 3:
-        print vowel_count(raw_input("Please enter a string:"))
+        print(vowel_count(input("Please enter a string:")))
     if case == 4:
-        print is_palindrome(raw_input("Please enter a string:"))
+        print(is_palindrome(input("Please enter a string:")))
     if case == 5:
         random_game()
     if case == 0:
-        print "已退出游戏"
+        print("已退出游戏")
         break
