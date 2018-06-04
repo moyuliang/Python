@@ -5,6 +5,7 @@ from src.baike_spider import url_manager, html_downloader, html_parser, html_out
 
 
 class SpiderMain(object):
+    # 初始化URL管理器，下载器，解析器，输出器
     def __init__(self):
         self.urls = url_manager.UrlManager()
         self.downloader = html_downloader.HtmlDownloader()
@@ -19,17 +20,17 @@ class SpiderMain(object):
                 new_url = self.urls.get_new_url()
                 print('craw %d : %s' % (count, new_url))
                 html_content = self.downloader.download(new_url)
-                new_urls, new_data = self.parser.parser(new_url, html_content)
+                new_urls, new_data = self.parser.parse(new_url, html_content)
                 self.urls.add_new_urls(new_urls)
                 self.outputer.collect_data(new_data)
 
-                if count == 1000:
+                if count == 20:
                     break
 
                 count = count + 1
-            except Exception as e:
-                print('craw failed')
-                print(e)
+            except:
+                print("craw failed")
+
         self.outputer.output_html()
 
 
