@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup as bs
-import urllib
+import urllib.request
 import re
 import ssl
 import pymysql.cursors
@@ -10,7 +10,7 @@ import pymysql.cursors
 ssl._create_default_https_context = ssl._create_stdlib_context
 
 # 请求URL并把结果用utf-8编码
-resp = urllib.urlopen("https://en.wikipedia.org/wiki/Main_Page").read().decode("utf-8")
+resp = urllib.request.urlopen("https://en.wikipedia.org/wiki/Main_Page").read().decode("utf-8")
 
 # 使用BeautifulSoup去解析
 soup = bs(resp, "html.parser")

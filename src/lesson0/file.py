@@ -13,7 +13,7 @@ with codecs.open("..\..\\resource\\txt\\readfile.txt", 'r', 'gbk') as fr:
             fw.write(line)
     except IOError as e:
         fw.close()
-        print*(e)
+        print(e)
 
 # 以读写方式打开文件
 # f=open("writefile.txt",'r+')
