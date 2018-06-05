@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 import re
-import urllib
+import urllib.request
 
 '''爬取网页的图片'''
 
@@ -26,9 +26,7 @@ logger.addHandler(handler)
 def get_img_url(url):
     logger.info('Start function get_url()')
 
-    req = urllib.urlopen(url)
-
-    buf = req.read()
+    buf = urllib.request.urlopen(url).read().decode('utf-8')
 
     listurl = re.findall(r'src="//img.+\.jpg', buf)
 
@@ -50,8 +48,7 @@ def download_img(imglist):
     i = 1
     for url in imglist:
         f = open('..\..\\jpg\\' + str(i) + '.jpg', 'wb+')
-        req = urllib.urlopen(url)
-        buf = req.read()
+        buf = urllib.request.urlopen(url).read()
         f.write(buf)
         logger.debug('%s.jpg，url= %s' % (i, url))
         i += 1

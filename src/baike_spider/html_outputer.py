@@ -71,8 +71,7 @@ class HtmlOutputer(object):
             fout.write("       <td>%s</td>\n" % data['url'])
             fout.write("       </tr>\n")
 
-        fout.write('''
-      </tbody>
+        fout.write('''</tbody>
      </table>
     </div> 
     <footer class="footer"> 
