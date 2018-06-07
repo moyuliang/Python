@@ -2,6 +2,9 @@
 
 # 逆转字符串——输入一个字符串，将其逆转并输出。
 import random
+import codecs
+import re
+from _pytest.assertion.util import basestring
 
 
 def reverse_string(a_str):
@@ -59,6 +62,21 @@ def random_game():
             break
         print("\n")
 
+def read_word(text):
+    if(isinstance(text,basestring)):
+        list = re.split('[\W\s]+',text)
+    return list
+
+def read_file():
+    list = []
+    with codecs.open("..\..\\resource\\txt\\readfile.txt", 'r') as fr:
+        try:
+            for line in fr.readlines():
+                list=list+read_word(line)
+            return list
+        except IOError as e:
+            fr.close()
+            print(e)
 
 while True:
     case = int(input("1.逆转字符串\t2.拉丁猪文字游戏\t3.统计元音字母\t\t4.判断回文\t5.猜数字\t0.退出\nPlease enter a num:"))
@@ -73,6 +91,8 @@ while True:
         print(is_palindrome(input("Please enter a string:")))
     if case == 5:
         random_game()
+    if case == 6:
+       print(read_file())
     if case == 0:
         print("已退出游戏")
         break
