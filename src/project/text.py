@@ -64,22 +64,31 @@ def random_game():
 
 def read_word(text):
     if(isinstance(text,basestring)):
-        list = re.split('[\W\s]+',text)
+        filter_str = filter(lambda x:x and x.isalpha(),re.split('[,|\.|?|!| |"|\n]+',text))
+        list = [item for item in filter_str]
     return list
 
-def read_file():
+def read_file(filepath):
     list = []
-    with codecs.open("..\..\\resource\\txt\\readfile.txt", 'r') as fr:
-        try:
-            for line in fr.readlines():
-                list=list+read_word(line)
-            return list
-        except IOError as e:
-            fr.close()
-            print(e)
+    with codecs.open(filepath, 'r','utf-8') as fr:
+        for line in fr.readlines():
+            list = list + read_word(line)
+        mydict = {}
+        for i in list:
+            if list.count(i) >= 1:
+                mydict[i] = list.count(i)
+        return mydict
+
+def write_dic(filepath):
+    mydict = read_file(filepath)
+    with codecs.open("..\..\\resource\\txt\\write_dic.txt", 'w','utf-8') as fw:
+        fw.write("文章中出现的单词及次数为:\n")
+        for i in mydict:
+            fw.write(i+" : "+str(mydict[i])+"\n")
+    print('统计完成，请查看write_dic.txt文件！')
 
 while True:
-    case = int(input("1.逆转字符串\t2.拉丁猪文字游戏\t3.统计元音字母\t\t4.判断回文\t5.猜数字\t0.退出\nPlease enter a num:"))
+    case = int(input("1.逆转字符串\t2.拉丁猪文字游戏\t3.统计元音字母\t\t4.判断回文\t5.猜数字\t6.统计文章中单词次数\t0.退出\nPlease enter a num:"))
 
     if case == 1:
         print(reverse_string(input("Please enter a string:")))
@@ -92,7 +101,7 @@ while True:
     if case == 5:
         random_game()
     if case == 6:
-       print(read_file())
+        write_dic(input("Please enter a file path:"))
     if case == 0:
         print("已退出游戏")
         break
