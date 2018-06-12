@@ -4,7 +4,7 @@
 import random
 import codecs
 import re
-from _pytest.assertion.util import basestring
+
 
 
 def reverse_string(a_str):
@@ -62,30 +62,39 @@ def random_game():
             break
         print("\n")
 
+
+# 读取一段文章，将英文单词取出到一个列表中
+
 def read_word(text):
-    if(isinstance(text,basestring)):
-        filter_str = filter(lambda x:x and x.isalpha(),re.split('[,|\.|?|!| |"|\n]+',text))
-        list = [item for item in filter_str]
-    return list
+    if(isinstance(text, str)):
+        filter_str = filter(lambda x: x and x.isalpha(), re.split('[,|\.|?|!| |"|\n]+', text))
+        mylist = [item for item in filter_str]
+    return mylist
+
+# 通过文件完整路径读取文件，将其中的单词和出现次数放入一个字典中
 
 def read_file(filepath):
-    list = []
-    with codecs.open(filepath, 'r','utf-8') as fr:
+    mylist = []
+    with codecs.open(filepath, 'r', 'utf-8') as fr:
         for line in fr.readlines():
-            list = list + read_word(line)
-        mydict = {}
-        for i in list:
-            if list.count(i) >= 1:
-                mydict[i] = list.count(i)
-        return mydict
+            mylist = mylist + read_word(line)
+    mydict = {}
+    for i in mylist:
+        if mylist.count(i) >= 1:
+            mydict[i] = mylist.count(i)
+    return mydict
+
+# 统计文件中的单词和出现次数并写入特定文件中
+
 
 def write_dic(filepath):
     mydict = read_file(filepath)
-    with codecs.open("..\..\\resource\\txt\\write_dic.txt", 'w','utf-8') as fw:
+    with codecs.open("..\..\\resource\\txt\\write_dic.txt", 'w', 'utf-8') as fw:
         fw.write("文章中出现的单词及次数为:\n")
         for i in mydict:
-            fw.write(i+" : "+str(mydict[i])+"\n")
+            fw.write(i + " : " + str(mydict[i]) + "\n")
     print('统计完成，请查看write_dic.txt文件！')
+
 
 while True:
     case = int(input("1.逆转字符串\t2.拉丁猪文字游戏\t3.统计元音字母\t\t4.判断回文\t5.猜数字\t6.统计文章中单词次数\t0.退出\nPlease enter a num:"))
