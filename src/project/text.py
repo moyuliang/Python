@@ -61,10 +61,10 @@ def random_game():
             continue
 
         if guess > secret_number:
-            guesses_times = guesses_times + 1;
+            guesses_times += 1;
             print("Your number is bigger than right number:", guess)
         elif guess < secret_number:
-            guesses_times = guesses_times + 1;
+            guesses_times += 1;
             print("Your number is smaller than right number:", guess)
         else:
             break
@@ -144,9 +144,16 @@ def use_collatz():
             print("Input Eroor! ")
             continue
 
+# 一个随机小游戏
+def magic8Ball2():
+    messages = ['It is certain', 'It is decidedly so', 'Yes definitely', 'Reply hazy try again', 'Ask again later',
+                     'Concentrate and ask again', 'My reply is no', 'Outlook not so good', 'Very dobtful']
+
+    print(messages[random.randint(0, len(messages)-1)])
+
 while True:
     case = int(
-        input("1.逆转字符串\t2.拉丁猪文字游戏\t3.统计元音字母\t\t4.判断回文\t5.猜数字\t6.统计文章中单词次数\t7.Collatz序列\t0.退出\nPlease enter a num:"))
+        input("1.逆转字符串\t2.拉丁猪文字游戏\t3.统计元音字母\t\t4.判断回文\t5.猜数字\t6.统计文章中单词次数\t7.Collatz序列\t8.magic8Ball2\t0.退出\nPlease enter a num:"))
 
     if case == 1:
         print(reverse_string(input("Please enter a string:")))
@@ -162,6 +169,8 @@ while True:
         write_dic(input("Please enter a file path:"))
     if case == 7:
         use_collatz()
+    if case ==8:
+        magic8Ball2()
     if case == 0:
         print("已退出游戏")
         break

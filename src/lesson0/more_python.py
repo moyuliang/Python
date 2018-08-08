@@ -43,7 +43,7 @@ print(filter(lambda x: math.sqrt(x) % 1 == 0, range(1, 101)))
 
 # 忽略大小写排序
 
-print(sorted(['bob', 'about', 'Zoo', 'Credit'], lambda s1, s2:math.cmp(s1.lower(), s2.lower())))
+print(sorted(['bob', 'about', 'Zoo', 'Credit'], key=str.lower))
 
 
 # 内层函数f()引用了外层函数calc_prod()的变量lst（参数也算变量），然后返回内层函数的情况，称为闭包（Closure）
