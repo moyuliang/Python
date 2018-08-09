@@ -132,28 +132,58 @@ def use_collatz():
         try:
             number = int(input("Enter number:"))
             # 整数不为零则开始递归调用
-            if(number!=0):
+            if (number != 0):
                 number = collatz(number)
                 while (number != 1):
                     number = collatz(number)
             # 输入0则退出循环，结束调用
-            elif(number==0):
+            elif (number == 0):
                 break
         except ValueError:
             # 输入非整数则提示输入错误
             print("Input Eroor! ")
             continue
 
+
 # 一个随机小游戏
 def magic8Ball2():
     messages = ['It is certain', 'It is decidedly so', 'Yes definitely', 'Reply hazy try again', 'Ask again later',
-                     'Concentrate and ask again', 'My reply is no', 'Outlook not so good', 'Very dobtful']
+                'Concentrate and ask again', 'My reply is no', 'Outlook not so good', 'Very dobtful']
 
-    print(messages[random.randint(0, len(messages)-1)])
+    print(messages[random.randint(0, len(messages) - 1)])
+
+
+# 逗号代码
+def list2str(spam):
+    spam[-1] = 'and ' + spam[-1]
+    return ', '.join(spam)
+
+# 字符图网格
+def listandlist():
+    grid = [['.', '.', '.', '.', '.', '.'],
+            ['.', '0', '0', '.', '.', '.'],
+            ['0', '0', '0', '0', '.', '.'],
+            ['0', '0', '0', '0', '0', '.'],
+            ['.', '0', '0', '0', '0', '0'],
+            ['0', '0', '0', '0', '0', '.'],
+            ['0', '0', '0', '0', '.', '.'],
+            ['.', '0', '0', '.', '.', '.'],
+            ['.', '.', '.', '.', '.', '.']]
+
+    for j in range(0, 5):
+        for i in range(0, 8):
+            print(grid[i][j], end='')
+        print(grid[i][j])
+
+
 
 while True:
     case = int(
-        input("1.逆转字符串\t2.拉丁猪文字游戏\t3.统计元音字母\t\t4.判断回文\t5.猜数字\t6.统计文章中单词次数\t7.Collatz序列\t8.magic8Ball2\t0.退出\nPlease enter a num:"))
+        input(
+            "1.逆转字符串\t2.拉丁猪文字游戏\t3.统计元音字母\t\t4.判断回文\t5.猜数字\t"
+            "6.统计文章中单词次数\t7.Collatz序列\t8.magic8Ball2\t9.逗号代码\t10.字符图网格"
+            "0.退出\n"
+            "Please enter a num:"))
 
     if case == 1:
         print(reverse_string(input("Please enter a string:")))
@@ -169,8 +199,12 @@ while True:
         write_dic(input("Please enter a file path:"))
     if case == 7:
         use_collatz()
-    if case ==8:
+    if case == 8:
         magic8Ball2()
+    if case == 9:
+        print(list2str(['apples', 'bananas', 'tofu', 'cats']))
+    if case==10:
+        listandlist()
     if case == 0:
         print("已退出游戏")
         break
