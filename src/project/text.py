@@ -47,7 +47,7 @@ def is_palindrome(a_str):
 
 
 def random_game():
-    guesses_times = 1;
+    guesses_times = 1
 
     secret_number = random.randint(0, 100)
 
@@ -61,10 +61,10 @@ def random_game():
             continue
 
         if guess > secret_number:
-            guesses_times += 1;
+            guesses_times += 1
             print("Your number is bigger than right number:", guess)
         elif guess < secret_number:
-            guesses_times += 1;
+            guesses_times += 1
             print("Your number is smaller than right number:", guess)
         else:
             break
@@ -159,6 +159,8 @@ def list2str(spam):
     return ', '.join(spam)
 
 # 字符图网格
+
+
 def listandlist():
     grid = [['.', '.', '.', '.', '.', '.'],
             ['.', '0', '0', '.', '.', '.'],
@@ -176,13 +178,36 @@ def listandlist():
         print(grid[i][j])
 
 
+# 好玩游戏的物品清单（列表小练习）
+def displayInventory(dic):
+    print('Inventory')
+    num = 0
+    for k, v in dic.items():
+        print(v, k)
+        num += v
+    print('Total number of items:' + str(num))
+
+# 列表到字典的函数，针对好玩游戏清单
+
+
+def addInventory(inventory, addItems):
+    # python常用列表遍歷小技巧
+    for i in range(len(addItems)):
+        # 列表中的值在字典中，字典對應值+1
+        if addItems[i] in inventory.keys():
+            inventory[addItems[i]] += 1
+        # 否則，將列表值加入字典，并把默認值設爲1
+        else:
+            inventory.setdefault(addItems[i], 1)
+    return inventory
+
 
 while True:
     case = int(
         input(
             "1.逆转字符串\t2.拉丁猪文字游戏\t3.统计元音字母\t\t4.判断回文\t5.猜数字\t"
-            "6.统计文章中单词次数\t7.Collatz序列\t8.magic8Ball2\t9.逗号代码\t10.字符图网格"
-            "0.退出\n"
+            "6.统计文章中单词次数\t7.Collatz序列\t8.magic8Ball2\t9.逗号代码\t10.字符图网格\t"
+            "11.物品清單\t0.退出\n"
             "Please enter a num:"))
 
     if case == 1:
@@ -203,8 +228,10 @@ while True:
         magic8Ball2()
     if case == 9:
         print(list2str(['apples', 'bananas', 'tofu', 'cats']))
-    if case==10:
+    if case == 10:
         listandlist()
+    if case == 11:
+        displayInventory(addInventory({'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}, ['gold coin', 'dagger', 'gold coin', 'gold coin', 'ruby']))
     if case == 0:
         print("已退出游戏")
         break
